@@ -1,4 +1,4 @@
-package org.ksga._07_mouk_makara_spring_homework002.model.response;
+package org.ksga._10_pon_channarith_pp.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

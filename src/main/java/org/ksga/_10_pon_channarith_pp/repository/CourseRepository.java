@@ -1,10 +1,10 @@
-package org.ksga._07_mouk_makara_spring_homework002.repository;
+package org.ksga._10_pon_channarith_pp.repository;
 
 import org.apache.ibatis.annotations.*;
-import org.ksga._07_mouk_makara_spring_homework002.model.Course;
-import org.ksga._07_mouk_makara_spring_homework002.model.Instructor;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.CourseCreateRequest;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.CourseUpdateRequest;
+import org.ksga._10_pon_channarith_pp.model.Course;
+import org.ksga._10_pon_channarith_pp.model.Instructor;
+import org.ksga._10_pon_channarith_pp.model.request.CourseCreateRequest;
+import org.ksga._10_pon_channarith_pp.model.request.CourseUpdateRequest;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public interface CourseRepository {
             @Result(property = "courseId", column = "course_id"),
             @Result(property = "courseName", column = "course_name"),
             @Result(property = "instructor", column = "instructor_id",
-                    one = @One(select = "org.ksga._07_mouk_makara_spring_homework002.repository.InstructorRepository.findInstructorById")
+                    one = @One(select = "org.ksga._10_pon_channarith_pp.repository.InstructorRepository.findInstructorById")
             )
     })
     List<Course> findAllCourses(Integer page, Integer size);

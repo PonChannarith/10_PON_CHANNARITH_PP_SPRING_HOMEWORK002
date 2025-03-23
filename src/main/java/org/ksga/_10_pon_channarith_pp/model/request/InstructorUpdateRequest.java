@@ -1,4 +1,4 @@
-package org.ksga._07_mouk_makara_spring_homework002.model.request;
+package org.ksga._10_pon_channarith_pp.model.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;

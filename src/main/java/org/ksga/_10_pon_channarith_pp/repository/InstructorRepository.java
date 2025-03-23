@@ -1,9 +1,9 @@
-package org.ksga._07_mouk_makara_spring_homework002.repository;
+package org.ksga._10_pon_channarith_pp.repository;
 
 import org.apache.ibatis.annotations.*;
-import org.ksga._07_mouk_makara_spring_homework002.model.Instructor;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.InstructorCreateRequest;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.InstructorUpdateRequest;
+import org.ksga._10_pon_channarith_pp.model.Instructor;
+import org.ksga._10_pon_channarith_pp.model.request.InstructorCreateRequest;
+import org.ksga._10_pon_channarith_pp.model.request.InstructorUpdateRequest;
 
 import java.util.List;
 

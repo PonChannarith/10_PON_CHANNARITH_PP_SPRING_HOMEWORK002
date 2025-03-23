@@ -1,13 +1,13 @@
-package org.ksga._07_mouk_makara_spring_homework002.service.serviceImpl;
+package org.ksga._10_pon_channarith_pp.service.serviceImpl;
 
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
-import org.ksga._07_mouk_makara_spring_homework002.model.Instructor;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.InstructorCreateRequest;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.InstructorUpdateRequest;
-import org.ksga._07_mouk_makara_spring_homework002.repository.InstructorRepository;
-import org.ksga._07_mouk_makara_spring_homework002.service.InstructorService;
+import org.ksga._10_pon_channarith_pp.model.Instructor;
+import org.ksga._10_pon_channarith_pp.model.request.InstructorCreateRequest;
+import org.ksga._10_pon_channarith_pp.model.request.InstructorUpdateRequest;
+import org.ksga._10_pon_channarith_pp.repository.InstructorRepository;
+import org.ksga._10_pon_channarith_pp.service.InstructorService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

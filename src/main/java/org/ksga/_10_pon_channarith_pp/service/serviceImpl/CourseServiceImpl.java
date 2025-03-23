@@ -1,10 +1,10 @@
-package org.ksga._07_mouk_makara_spring_homework002.service.serviceImpl;
+package org.ksga._10_pon_channarith_pp.service.serviceImpl;
 
-import org.ksga._07_mouk_makara_spring_homework002.model.Course;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.CourseCreateRequest;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.CourseUpdateRequest;
-import org.ksga._07_mouk_makara_spring_homework002.repository.CourseRepository;
-import org.ksga._07_mouk_makara_spring_homework002.service.CourseService;
+import org.ksga._10_pon_channarith_pp.model.Course;
+import org.ksga._10_pon_channarith_pp.model.request.CourseCreateRequest;
+import org.ksga._10_pon_channarith_pp.model.request.CourseUpdateRequest;
+import org.ksga._10_pon_channarith_pp.repository.CourseRepository;
+import org.ksga._10_pon_channarith_pp.service.CourseService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

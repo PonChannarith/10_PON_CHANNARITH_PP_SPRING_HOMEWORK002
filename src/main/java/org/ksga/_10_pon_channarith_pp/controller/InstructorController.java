@@ -1,11 +1,11 @@
-package org.ksga._07_mouk_makara_spring_homework002.controller;
+package org.ksga._10_pon_channarith_pp.controller;
 
-import org.ksga._07_mouk_makara_spring_homework002.model.Instructor;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.InstructorCreateRequest;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.InstructorUpdateRequest;
-import org.ksga._07_mouk_makara_spring_homework002.model.response.ApiResponse;
-import org.ksga._07_mouk_makara_spring_homework002.model.response.ErrorResponse;
-import org.ksga._07_mouk_makara_spring_homework002.service.InstructorService;
+import org.ksga._10_pon_channarith_pp.model.Instructor;
+import org.ksga._10_pon_channarith_pp.model.request.InstructorCreateRequest;
+import org.ksga._10_pon_channarith_pp.model.request.InstructorUpdateRequest;
+import org.ksga._10_pon_channarith_pp.model.response.ApiResponse;
+import org.ksga._10_pon_channarith_pp.model.response.ErrorResponse;
+import org.ksga._10_pon_channarith_pp.service.InstructorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

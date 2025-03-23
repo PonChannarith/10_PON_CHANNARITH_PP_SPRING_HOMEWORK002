@@ -1,8 +1,8 @@
-package org.ksga._07_mouk_makara_spring_homework002.service;
+package org.ksga._10_pon_channarith_pp.service;
 
-import org.ksga._07_mouk_makara_spring_homework002.model.Course;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.CourseCreateRequest;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.CourseUpdateRequest;
+import org.ksga._10_pon_channarith_pp.model.Course;
+import org.ksga._10_pon_channarith_pp.model.request.CourseCreateRequest;
+import org.ksga._10_pon_channarith_pp.model.request.CourseUpdateRequest;
 
 import java.util.List;
 

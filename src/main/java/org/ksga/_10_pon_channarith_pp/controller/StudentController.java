@@ -1,11 +1,11 @@
-package org.ksga._07_mouk_makara_spring_homework002.controller;
+package org.ksga._10_pon_channarith_pp.controller;
 
-import org.ksga._07_mouk_makara_spring_homework002.model.Student;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.StudentCreateRequest;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.StudentUpdateRequest;
-import org.ksga._07_mouk_makara_spring_homework002.model.response.ApiResponse;
-import org.ksga._07_mouk_makara_spring_homework002.model.response.ErrorResponse;
-import org.ksga._07_mouk_makara_spring_homework002.service.StudentService;
+import org.ksga._10_pon_channarith_pp.model.Student;
+import org.ksga._10_pon_channarith_pp.model.request.StudentCreateRequest;
+import org.ksga._10_pon_channarith_pp.model.request.StudentUpdateRequest;
+import org.ksga._10_pon_channarith_pp.model.response.ApiResponse;
+
+import org.ksga._10_pon_channarith_pp.service.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/students")
-public class StudentController {
+public class StudentController<ApiResponse> {
     private final StudentService studentService;
 
     public StudentController(StudentService studentService) {
@@ -61,7 +61,7 @@ public class StudentController {
     }
     // createCourse
     @PostMapping
-    public ResponseEntity<ApiResponse<Student>> createStudent(@RequestBody StudentCreateRequest studentCreateRequest){
+    public <ApiResponse> ResponseEntity<ApiResponse<Student>> createStudent(@RequestBody StudentCreateRequest studentCreateRequest){
         Student newStudent = studentService.createStudent(studentCreateRequest);
         System.out.println(newStudent);
         ApiResponse<Student> response = ApiResponse.<Student>builder()

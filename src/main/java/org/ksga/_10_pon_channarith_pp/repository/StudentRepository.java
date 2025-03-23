@@ -1,10 +1,10 @@
-package org.ksga._07_mouk_makara_spring_homework002.repository;
+package org.ksga._10_pon_channarith_pp.repository;
 
 import org.apache.ibatis.annotations.*;
-import org.ksga._07_mouk_makara_spring_homework002.model.Course;
-import org.ksga._07_mouk_makara_spring_homework002.model.Student;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.StudentCreateRequest;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.StudentUpdateRequest;
+import org.ksga._10_pon_channarith_pp.model.Course;
+import org.ksga._10_pon_channarith_pp.model.Student;
+import org.ksga._10_pon_channarith_pp.model.request.StudentCreateRequest;
+import org.ksga._10_pon_channarith_pp.model.request.StudentUpdateRequest;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public interface StudentRepository {
             @Result(property = "email", column = "email"),
             @Result(property = "phoneNumber", column = "phone_number"),
             @Result(property = "courses", column = "student_id",
-                    many = @Many(select = "org.ksga._07_mouk_makara_spring_homework002.repository.StudentRepository.findCoursesByStudentId")
+                    many = @Many(select = "org.ksga._10_pon_channarith_pp.repository.StudentRepository.findCoursesByStudentId")
             )
     })
     List<Student> findAllStudents(@Param("page") Integer page, @Param("size") Integer size);
@@ -36,7 +36,7 @@ public interface StudentRepository {
             @Result(property = "courseId", column = "course_id"),
             @Result(property = "courseName", column = "course_name"),
             @Result(property = "instructor", column = "instructor_id",
-                one = @One(select = "org.ksga._07_mouk_makara_spring_homework002.repository.InstructorRepository.findInstructorById")
+                one = @One(select = "org.ksga._10_pon_channarith_pp.repository.InstructorRepository.findInstructorById")
             )
     })
     List<Course> findCoursesByStudentId(@Param("studentId") Integer studentId);

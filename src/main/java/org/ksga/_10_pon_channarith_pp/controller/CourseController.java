@@ -1,11 +1,11 @@
-package org.ksga._07_mouk_makara_spring_homework002.controller;
+package org.ksga._10_pon_channarith_pp.controller;
 
-import org.ksga._07_mouk_makara_spring_homework002.model.Course;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.CourseCreateRequest;
-import org.ksga._07_mouk_makara_spring_homework002.model.request.CourseUpdateRequest;
-import org.ksga._07_mouk_makara_spring_homework002.model.response.ApiResponse;
-import org.ksga._07_mouk_makara_spring_homework002.model.response.ErrorResponse;
-import org.ksga._07_mouk_makara_spring_homework002.service.CourseService;
+import org.ksga._10_pon_channarith_pp.model.Student;
+import org.ksga._10_pon_channarith_pp.model.request.StudentCreateRequest;
+import org.ksga._10_pon_channarith_pp.model.request.StudentUpdateRequest;
+import org.ksga._10_pon_channarith_pp.model.response.ApiResponse;
+import org.ksga._10_pon_channarith_pp.model.response.ErrorResponse;
+import org.ksga._10_pon_channarith_pp.service.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,109 +14,121 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/courses")
-public class CourseController {
-    private final CourseService courseService;
+@RequestMapping("/api/v1/students")
+public class StudentController {
+    private final StudentService studentService;
 
-    public CourseController(CourseService courseService) {
-        this.courseService = courseService;
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
     }
-    // findAllCourses
-    @GetMapping
-    public ResponseEntity<ApiResponse<List<Course>>> findAllCourses(@RequestParam(defaultValue = "1") Integer page,
-                                                                    @RequestParam(defaultValue = "10") Integer size){
 
-        ApiResponse<List<Course>> response = ApiResponse.<List<Course>>builder()
-                .message("Find all courses is successfully")
-                .payload(courseService.findAllCourses(page, size))
+    // Find all students with pagination
+    @GetMapping
+    public ResponseEntity<ApiResponse<List<Student>>> findAllStudents(
+            @RequestParam(defaultValue = "1") Integer page,
+            @RequestParam(defaultValue = "10") Integer size) {
+
+        ApiResponse<List<Student>> response = ApiResponse.<List<Student>>builder()
+                .message("Find all students successfully")
+                .payload(studentService.findAllStudents(page, size))
                 .status(HttpStatus.OK)
                 .timestamp(LocalDateTime.now())
                 .build();
-        return ResponseEntity.status(HttpStatus.OK).body(response);
-    }
-    // findCourseById
-    @GetMapping("/{id}")
-    public ResponseEntity<?> findCourseById(@PathVariable Integer id){
-        Course course = courseService.findCourseById(id);
 
-        if(course != null){
-            ApiResponse<Course> response = ApiResponse.<Course>builder()
-                    .message("Find course by id is successfully")
-                    .payload(course)
+        return ResponseEntity.ok(response);
+    }
+
+    // Find Student By ID
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findStudentById(@PathVariable Integer id) {
+        Student student = studentService.findStudentById(id);
+
+        if (student != null) {
+            ApiResponse<Student> response = ApiResponse.<Student>builder()
+                    .message("Student found successfully")
+                    .payload(student)
                     .status(HttpStatus.OK)
                     .timestamp(LocalDateTime.now())
                     .build();
-            return ResponseEntity.status(HttpStatus.OK).body(response);
+            return ResponseEntity.ok(response);
         }
-        // custom error response
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(
-                "about:blank",
-                "Not Found",
-                HttpStatus.NOT_FOUND.value(),
-                "Courses with ID " + id + " not found.",
-                "/api/v1/courses/" + id,
-                LocalDateTime.now()
-        ));
-    }
-//    createCourse
-    @PostMapping
-    public ResponseEntity<ApiResponse<Course>> createCourse(@RequestBody CourseCreateRequest courseCreateRequest){
-        Course newCourse = courseService.createCourse(courseCreateRequest);
 
-        ApiResponse<Course> response = ApiResponse.<Course>builder()
-                .message("Create new course is successfully")
-                .payload(newCourse)
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ErrorResponse(
+                        "about:blank",
+                        "Not Found",
+                        HttpStatus.NOT_FOUND.value(),
+                        "Student with ID " + id + " not found.",
+                        "/api/v1/students/" + id,
+                        LocalDateTime.now()
+                ));
+    }
+
+    // Create Student
+    @PostMapping
+    public ResponseEntity<ApiResponse<Student>> createStudent(@RequestBody StudentCreateRequest studentCreateRequest) {
+        Student newStudent = studentService.createStudent(studentCreateRequest);
+
+        ApiResponse<Student> response = ApiResponse.<Student>builder()
+                .message("Student created successfully")
+                .payload(newStudent)
                 .status(HttpStatus.CREATED)
                 .timestamp(LocalDateTime.now())
                 .build();
+
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
-    // deleteCourseById
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCourseById(@PathVariable Integer id){
-        Course deletedCourse = courseService.findCourseById(id);
-        if (deletedCourse == null){
-            // custom error response
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(
-                    "about:blank",
-                    "Not Found",
-                    HttpStatus.NOT_FOUND.value(),
-                    "Courses with ID " + id + " not found.",
-                    "/api/v1/courses/" + id,
-                    LocalDateTime.now()
-            ));
-        }
-        courseService.deleteCourseById(id);
 
-        return ResponseEntity.ok(ApiResponse.<Course>builder()
-                .message("Delete course by id is successfully")
+    // Delete Student By ID
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteStudentById(@PathVariable Integer id) {
+        Student existingStudent = studentService.findStudentById(id);
+
+        if (existingStudent == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ErrorResponse(
+                            "about:blank",
+                            "Not Found",
+                            HttpStatus.NOT_FOUND.value(),
+                            "Student with ID " + id + " not found.",
+                            "/api/v1/students/" + id,
+                            LocalDateTime.now()
+                    ));
+        }
+
+        studentService.deleteStudentById(id);
+
+        return ResponseEntity.ok(ApiResponse.<Student>builder()
+                .message("Student deleted successfully")
                 .status(HttpStatus.NO_CONTENT)
                 .timestamp(LocalDateTime.now())
                 .build());
     }
-    // updateCourseById
-    @PutMapping("/{id}")
-    public ResponseEntity<?> updateCourseById(@PathVariable Integer id, @RequestBody CourseUpdateRequest courseUpdateRequest){
-        Course exitingCourse = courseService.findCourseById(id);
 
-        if (exitingCourse == null){
-            // custom error response
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(
-                    "about:blank",
-                    "Not Found",
-                    HttpStatus.NOT_FOUND.value(),
-                    "Courses with ID " + id + " not found.",
-                    "/api/v1/courses/" + id,
-                    LocalDateTime.now()
-            ));
+    // Update Student By ID
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateStudentById(@PathVariable Integer id, @RequestBody StudentUpdateRequest studentUpdateRequest) {
+        Student existingStudent = studentService.findStudentById(id);
+
+        if (existingStudent == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ErrorResponse(
+                            "about:blank",
+                            "Not Found",
+                            HttpStatus.NOT_FOUND.value(),
+                            "Student with ID " + id + " not found.",
+                            "/api/v1/students/" + id,
+                            LocalDateTime.now()
+                    ));
         }
-        Course updatedCourse = courseService.updateCourseById(id, courseUpdateRequest);
-        ApiResponse<Course> response = ApiResponse.<Course>builder()
-                .message("Course updated successfully")
-                .payload(updatedCourse)
+
+        Student updatedStudent = studentService.updateStudentById(id, studentUpdateRequest);
+
+        return ResponseEntity.ok(ApiResponse.<Student>builder()
+                .message("Student updated successfully")
+                .payload(updatedStudent)
                 .status(HttpStatus.OK)
                 .timestamp(LocalDateTime.now())
-                .build();
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+                .build());
     }
 }

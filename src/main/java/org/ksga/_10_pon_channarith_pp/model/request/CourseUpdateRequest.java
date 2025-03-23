@@ -1,9 +1,9 @@
-package org.ksga._07_mouk_makara_spring_homework002.model.request;
+package org.ksga._10_pon_channarith_pp.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.ksga._07_mouk_makara_spring_homework002.model.Instructor;
+import org.ksga._10_pon_channarith_pp.model.Instructor;
 
 @Data
 @AllArgsConstructor
